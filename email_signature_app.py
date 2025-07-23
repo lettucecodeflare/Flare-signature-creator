@@ -18,7 +18,7 @@ HTML_TEMPLATE = """
 
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; font-size: medium;">
 <tr>
-<td><img src="https://www.flarehr.com/wp-content/uploads/2020/09/Flare_Master-Logo-01.png" alt="Flare logo" width="144" style="display: block;"></td>
+<td><a href="{logo_link_url}" target="_blank"><img src="https://www.flarehr.com/wp-content/uploads/2020/09/Flare_Master-Logo-01.png" alt="Flare logo" width="144" style="display: block;"></a></td>
 <td width="4" style="font-size: 10; line-height: 0;">&nbsp;</td>
 <td><img src="https://www.flarehr.com/wp-content/uploads/2025/07/signature-divider.png" alt="Flare logo" width="24" style="display: block;"></td>
 <td width="6" style="font-size: 10; line-height: 0;">&nbsp;</td>
@@ -135,6 +135,8 @@ if not st.session_state['authenticated']:
             else:
                 st.error("Incorrect password.")
 
+# st.session_state['authenticated'] = True
+
 if st.session_state['authenticated']:
     with st.sidebar:
         st.image("https://www.flarehr.com/wp-content/uploads/2020/09/Flare_Master-Logo-01.png", width=120)
@@ -175,14 +177,25 @@ if st.session_state['authenticated']:
             phone2_disp = format_phone(phone2_digits)
             phone_links.append(f'<a href="tel:{phone2_digits}" style="text-decoration:none; color:rgb(0,0,0); font:inherit;">{phone2_disp}</a>')
         phone_numbers = f' <span style="font-weight: 400; color: rgb(220,220,220);">&nbsp;|&nbsp;</span> '.join(phone_links)
+        logo_link_option = st.selectbox(
+            "Logo link destination",
+            options=["Flare Web", "Flare Cars"],
+            index=0
+        )
+
+        if logo_link_option == "Flare Web":
+            logo_link_url = "https://www.flarehr.com/"
+        else:
+            logo_link_url = "https://www.flarehr.com/cars"
+
         st.markdown("<div style='height: 16px'></div>", unsafe_allow_html=True)
         st.subheader("Campaign")
         has_campaign = st.toggle("Show campaign banner", value=False)
         banner_html = ""
         if has_campaign:
-            banner_url = st.text_input("Banner Image URL")
-            banner_link = st.text_input("Banner Link")
-            banner_alt = st.text_input("Banner Alt Text")
+            banner_url = st.text_input("Banner image URL")
+            banner_link = st.text_input("Banner link")
+            banner_alt = st.text_input("Banner alt text")
             banner_html = f'<table><tr><td height="24" style="font-size: 0; line-height: 0;">&nbsp;</td></tr></table>\n<a href="{banner_link}"><img src="{banner_url}" alt="{banner_alt}" width="400" style="display: block;"></a>'
         st.markdown("<div style='height: 16px'></div>", unsafe_allow_html=True)
         st.subheader("Trustpilot")
@@ -201,7 +214,8 @@ if st.session_state['authenticated']:
         email=email,
         phone_numbers=phone_numbers,
         banner_html=banner_html,
-        trustpilot_html=trustpilot_html
+        trustpilot_html=trustpilot_html,
+        logo_link_url=logo_link_url
     )
     st.markdown(html_out, unsafe_allow_html=True)
     st.markdown("<div style='height: 16px'></div>", unsafe_allow_html=True)
@@ -228,7 +242,7 @@ if st.session_state['authenticated']:
     3. Navigate to "Outlook" &gt; "Settings" &gt; "Signatures"
     3. Add a new signature > Paste (**Ctrl + V** / **Cmd + V**)
     """)
-    st.download_button(label="Download signature", data=html_out, file_name=short_name+"-email_signature.htm",)
+    st.download_button(label="Download signature", data=html_out, file_name="flare-email_signature.htm",)
 
     # Add debug output of the raw HTML for inspection
     # st.code(html_out, language="html") 
