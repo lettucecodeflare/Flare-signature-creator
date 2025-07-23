@@ -177,7 +177,7 @@ if st.session_state['authenticated']:
         phone_numbers = f' <span style="font-weight: 400; color: rgb(220,220,220);">&nbsp;|&nbsp;</span> '.join(phone_links)
         st.markdown("<div style='height: 16px'></div>", unsafe_allow_html=True)
         st.subheader("Campaign")
-        has_campaign = st.toggle("Show campaign banner", value=True)
+        has_campaign = st.toggle("Show campaign banner", value=False)
         banner_html = ""
         if has_campaign:
             banner_url = st.text_input("Banner Image URL")
