@@ -19,10 +19,9 @@ HTML_TEMPLATE = """
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; font-size: medium;">
 <tr>
 <td><img src="https://www.flarehr.com/wp-content/uploads/2020/09/Flare_Master-Logo-01.png" alt="Flare logo" width="144" style="display: block;"></td>
-
-<td width="12" style="font-size: 10; line-height: 0;">&nbsp;</td>
-<td width="0" style="font-size: 0.5; padding: 0; line-height: 0; background-color: #dcdcdc; border-right: solid 1px #dcdcdc !important; color: #dcdcdc;">|</td>
-<td width="12" style="font-size: 10; line-height: 0;">&nbsp;</td>
+<td width="4" style="font-size: 10; line-height: 0;">&nbsp;</td>
+<td><img src="https://www.flarehr.com/wp-content/uploads/2025/07/signature-divider.png" alt="Flare logo" width="24" style="display: block;"></td>
+<td width="6" style="font-size: 10; line-height: 0;">&nbsp;</td>
 
 <td>
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; font-size: medium;">
@@ -36,7 +35,6 @@ HTML_TEMPLATE = """
 </td>
 </tr>
 </table>
-<table><tr><td height="24" style="font-size: 0; line-height: 0;">&nbsp;</td></tr></table>
 {banner_html}
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; font-size: medium;"><tr><td height="30"></td></tr></table>
 {trustpilot_html}
@@ -185,7 +183,7 @@ if st.session_state['authenticated']:
             banner_url = st.text_input("Banner Image URL")
             banner_link = st.text_input("Banner Link")
             banner_alt = st.text_input("Banner Alt Text")
-            banner_html = f'<a href="{banner_link}"><img src="{banner_url}" alt="{banner_alt}" width="400" style="display: block;"></a>'
+            banner_html = f'<table><tr><td height="24" style="font-size: 0; line-height: 0;">&nbsp;</td></tr></table>\n<a href="{banner_link}"><img src="{banner_url}" alt="{banner_alt}" width="400" style="display: block;"></a>'
         st.markdown("<div style='height: 16px'></div>", unsafe_allow_html=True)
         st.subheader("Trustpilot")
         show_trustpilot = st.toggle("Show Trustpilot", value=True)
