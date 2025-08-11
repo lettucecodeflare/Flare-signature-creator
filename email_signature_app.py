@@ -56,7 +56,7 @@ TRUSTPILOT_HTML = '''
           "
         >
           <a
-            href="https://www.trustpilot.com/review/flarehr.com?utm_medium=Trustbox&utm_source=EmailSignature2"
+            href="https://au.trustpilot.com/review/flarehr.com?utm_medium=Trustbox&utm_source=EmailSignature2"
             target="_blank"
             rel="noopener noreferrer"
             style="text-decoration: none; text-underline: none"
@@ -80,7 +80,7 @@ TRUSTPILOT_HTML = '''
           </a>
           <br />
           <a
-            href="https://www.trustpilot.com/review/flarehr.com?utm_medium=Trustbox&utm_source=EmailSignature2"
+            href="https://au.trustpilot.com/review/flarehr.com?utm_medium=Trustbox&utm_source=EmailSignature2"
             target="_blank"
             rel="noopener noreferrer"
             style="text-decoration: none; text-underline: none"
